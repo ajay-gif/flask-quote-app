@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            padding: 32px;
+            text-align: center;
+        }
+        .categories {
+            margin-bottom: 24px;
+        }
+        .btn-pill {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 0 4px;
+            background: #e2e8f0;
+            color: #475569;
+        }
+        .btn-pill.active {
+            background: #4f46e5;
+            color: #ffffff;
+        }
+        .quote-box {
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .quote-text {
+            font-size: 20px;
+            font-style: italic;
+            color: #1e293b;
+            margin: 0 0 12px 0;
+        }
+        .quote-author {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4f46e5;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .action-area {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #f1f5f9;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: #4f46e5;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .btn-primary:hover {
+            background: #4338ca;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- Category Navigation -->
+        <div class="categories">
+            <a href="/?category=all" class="btn-pill {% if current_category == 'all' %}active{% endif %}">All</a>
+            <a href="/?category=Inspirational" class="btn-pill {% if current_category == 'Inspirational' %}active{% endif %}">Inspirational</a>
+            <a href="/?category=Funny" class="btn-pill {% if current_category == 'Funny' %}active{% endif %}">Funny</a>
+        </div>
+
+        <!-- Quote Area -->
+        <div class="quote-box">
+            <p class="quote-text">“{{ quote.text }}”</p>
+            <span class="quote-author">— {{ quote.author }}</span>
+        </div>
+
+        <!-- Action Button -->
+        <div class="action-area">
+            <a href="/?category={{ current_category }}" class="btn-primary">Next Quote →</a>
+        </div>
+    </div>
+
+</body>
+</html>
